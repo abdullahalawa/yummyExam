@@ -1,9 +1,12 @@
+:root {
+  --transition: all 0.4s ease-in-out 0s;
+}
+
 body {
   background-color: black;
 }
 
 /* sidebar */
-/* innerbar */
 
 div.sidebar {
   top: 0;
@@ -22,5 +25,27 @@ div.sidebar div.outerbar {
 div.innerbar .navbar ul li {
   position: relative;
   top: 200px;
-  /* display: none; */
+}
+
+/* Home Page */
+
+div.meal-card {
+  position: relative;
+  overflow: hidden;
+}
+
+div.meal-card div.overlay {
+  position: absolute;
+  top: 500px;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+}
+
+div.meal-card:hover div.overlay {
+  top: 0;
+  opacity: 1;
 }
