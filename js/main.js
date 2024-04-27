@@ -1,3 +1,5 @@
+import { getHomepageDate } from "./api.js";
+
 // sidebar menu
 let navBarBtn = $(".nav-btn").children("a");
 
@@ -35,3 +37,6 @@ $(navBarBtn).on("click", function () {
     }
   }
 });
+
+// Get Homepage Data
+$("#main-data").html(await getHomepageDate());
