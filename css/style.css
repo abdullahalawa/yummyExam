@@ -1,8 +1,11 @@
+body {
+  background-color: black;
+}
+
 /* sidebar */
 /* innerbar */
 
 div.sidebar {
-  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -10,4 +13,14 @@ div.sidebar {
 
 div.sidebar div.innerbar {
   width: 260px;
+}
+
+div.sidebar div.outerbar {
+  width: 75px;
+}
+
+div.innerbar .navbar ul li {
+  position: relative;
+  top: 200px;
+  /* display: none; */
 }
