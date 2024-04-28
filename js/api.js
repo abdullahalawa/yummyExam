@@ -35,6 +35,7 @@ export async function getHomepageDate() {
   return htmldata;
 }
 
+// Get Meal details page
 export async function getMealDetails(mealId) {
   let response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
@@ -106,3 +107,6 @@ ${tags}
 
   return htmlData;
 }
+
+// Search meal by name
+export async function searchMealByName(mealName) {}

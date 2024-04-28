@@ -50,3 +50,9 @@ div.meal-card:hover div.overlay {
   top: 0;
   opacity: 1;
 }
+
+/* Search page */
+#byName[type="text"]::placeholder,
+#byFirstLetter[type="text"]::placeholder {
+  color: #ffffff60 !important; /* Replace with your desired color */
+}
