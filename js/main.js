@@ -1,4 +1,16 @@
-import { getHomepageDate, getMealDetails } from "./api.js";
+import {
+  getHomepageDate,
+  getMealDetails,
+  getCategories,
+  getMealsByCategory,
+} from "./api.js";
+
+// Loader
+$(window).on("load", function () {
+  $(".loaderContainer").fadeOut(1000);
+  $("body").css("overflow", "visible");
+  $(".loaderContainer-inner").hide(0);
+});
 
 // sidebar menu
 let navBarBtn = $(".nav-btn").children("a");
@@ -43,36 +55,48 @@ $("#main-data").html(await getHomepageDate());
 
 // Get Meal Details Page
 $(".meal-card a").on("click", async function (e) {
-  let mealid = $(e.target).attr("data-id");
-  $("#main-data").html(await getMealDetails(mealid));
-});
-
-// Meal Search Page
-$(".navbar #search").on("click", function () {
+  $(".loaderContainer-inner").fadeIn(300);
   $(".sidebar").animate({ left: -sideBarInner }, 500);
   navBarBtn.children("i").removeClass("fa-x");
   navBarBtn.children("i").addClass("fa-bars");
+  let mealid = $(e.target).attr("data-id");
 
-  return $("#main-data").html(
-    `        <div class="row">
-  <div class="col">
-    <input
-      type="text"
-      class="form-control bg-black text-white"
-      id="byName"
-      placeholder="Search By Name"
-      aria-label="Search By Name"
-    />
-  </div>
-  <div class="col">
-    <input
-      type="text"
-      class="form-control bg-black text-white"
-      id="byFirstLetter"
-      placeholder="Search by first letter"
-      aria-label="Search by first letter"
-    />
-  </div>
-</div>`
-  );
+  $("#main-data").html(await getMealDetails(mealid));
+  $(".loaderContainer-inner").fadeOut(300);
+});
+
+// Get Categories
+$("#categories").on("click", async function () {
+  $(".loaderContainer-inner").fadeIn(300);
+
+  $(".sidebar").animate({ left: -sideBarInner }, 500);
+  navBarBtn.children("i").removeClass("fa-x");
+  navBarBtn.children("i").addClass("fa-bars");
+  $("#main-data").html(await getCategories());
+
+  // Get Meals by Category
+  $(".cat-card a").on("click", async function (e) {
+    $(".loaderContainer-inner").fadeIn(300);
+    $(".sidebar").animate({ left: -sideBarInner }, 500);
+    navBarBtn.children("i").removeClass("fa-x");
+    navBarBtn.children("i").addClass("fa-bars");
+    let mealid = $(e.target).attr("data-id");
+    $("#main-data").html(await getMealsByCategory(mealid));
+
+    // Get Meal Details Page
+    $(".meal-card a").on("click", async function (e) {
+      $(".loaderContainer-inner").fadeIn(300);
+      $(".sidebar").animate({ left: -sideBarInner }, 500);
+      navBarBtn.children("i").removeClass("fa-x");
+      navBarBtn.children("i").addClass("fa-bars");
+      let mealid = $(e.target).attr("data-id");
+
+      $("#main-data").html(await getMealDetails(mealid));
+      $(".loaderContainer-inner").fadeOut(500);
+    });
+
+    $(".loaderContainer-inner").fadeOut(500);
+  });
+
+  $(".loaderContainer-inner").fadeOut(500);
 });

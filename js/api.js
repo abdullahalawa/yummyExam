@@ -35,6 +35,83 @@ export async function getHomepageDate() {
   return htmldata;
 }
 
+// Search meal by name
+// export async function searchMealByName(mealName) {}
+
+// Get categories
+export async function getCategories() {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/categories.php`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const cat in data.categories) {
+    let desc = data.categories[cat].strCategoryDescription;
+    let first100 = desc.slice(0, 100);
+
+    htmldata += `
+    
+    <div class="col-md-3">
+      <div class="cat-card">
+        <a href="#" data-id="${data.categories[cat].strCategory}">
+          <img
+            class="w-100 rounded"
+            src="${data.categories[cat].strCategoryThumb}"
+            data-id="${data.categories[cat].strCategory}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex flex-column justify-content-center align-items-center p-2" data-id="${data.categories[cat].strCategory}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.categories[cat].strCategory}">${data.categories[cat].strCategory}</h3>
+            <p class="text-black" data-id="${data.categories[cat].strCategory}">${first100}</p>
+          </div>
+        </a>
+      </div>
+    </div>`;
+
+    // counter++;
+  }
+  return htmldata;
+}
+
+// Get Meals by Category
+export async function getMealsByCategory(catName) {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${catName}`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  // console.log(data);
+
+  for (const meal in data.meals) {
+    htmldata += `<div class="col-md-3">
+      <div class="meal-card">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
+          <img
+            class="w-100 rounded"
+            src="${data.meals[meal].strMealThumb}" 
+            data-id="${data.meals[meal].idMeal}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
+          </div>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
+
 // Get Meal details page
 export async function getMealDetails(mealId) {
   let response = await fetch(
@@ -45,8 +122,6 @@ export async function getMealDetails(mealId) {
 
   let recips = ``;
   let tags = ``;
-
-  console.log(data.meals[0]);
 
   for (let i = 1; i <= 20; i++) {
     if (data.meals[0][`strIngredient${i}`]) {
@@ -107,6 +182,3 @@ ${tags}
 
   return htmlData;
 }
-
-// Search meal by name
-export async function searchMealByName(mealName) {}

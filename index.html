@@ -19,6 +19,10 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <div class="loaderContainer">
+      <span class="loader"></span>
+    </div>
+
     <!-- SideBar -->
     <div class="sidebar position-fixed d-flex">
       <div
@@ -33,21 +37,24 @@
             </li>
 
             <li class="list-unstyled mb-3">
-              <a class="text-white text-decoration-none" href="#">Categories</a>
-            </li>
-
-            <li class="list-unstyled mb-3">
-              <a class="text-white text-decoration-none" href="#">Area</a>
-            </li>
-
-            <li class="list-unstyled mb-3">
-              <a class="text-white text-decoration-none" href="#"
-                >Ingredients</a
+              <a
+                class="text-white text-decoration-none"
+                id="categories"
+                href="#"
+                >Categories</a
               >
             </li>
 
             <li class="list-unstyled mb-3">
-              <a class="text-white text-decoration-none" href="#">Contact Us</a>
+              <a class="text-white text-decoration-none" href="">Area</a>
+            </li>
+
+            <li class="list-unstyled mb-3">
+              <a class="text-white text-decoration-none" href="">Ingredients</a>
+            </li>
+
+            <li class="list-unstyled mb-3">
+              <a class="text-white text-decoration-none" href="">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -78,6 +85,9 @@
       </div>
     </div>
 
+    <div class="loaderContainer-inner">
+      <span class="loader"></span>
+    </div>
     <!-- Main -->
 
     <div class="container">
