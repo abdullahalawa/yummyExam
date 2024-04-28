@@ -1,4 +1,4 @@
-import { getHomepageDate } from "./api.js";
+import { getHomepageDate, getMealDetails } from "./api.js";
 
 // sidebar menu
 let navBarBtn = $(".nav-btn").children("a");
@@ -40,3 +40,9 @@ $(navBarBtn).on("click", function () {
 
 // Get Homepage Data
 $("#main-data").html(await getHomepageDate());
+
+// Get Meal Details
+$(".meal-card a").on("click", async function (e) {
+  let mealid = $(e.target).attr("data-id");
+  $("#main-data").html(await getMealDetails(mealid));
+});
