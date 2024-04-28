@@ -12,6 +12,7 @@ div.sidebar {
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 9999;
 }
 
 div.sidebar div.innerbar {

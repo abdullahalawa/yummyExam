@@ -68,7 +68,7 @@ export async function getMealDetails(mealId) {
     class="w-100 mb-2 rounded"
     src="${data.meals[0].strMealThumb}"
     alt=""/>
-  <h3 class="text-white fs-2">Corba</h3>
+  <h3 class="text-white fs-2">${data.meals[0].strMeal}</h3>
 </div>
 <div class="col-md-8">
   <h3 class="text-white fs-2">Instructions</h3>
@@ -94,12 +94,12 @@ ${tags}
 
   <a
     target="_blank"
-    href="https://findingtimeforcooking.com/main-dishes/red-lentil-soup-corba/"
+    href="${data.meals[0].strSource}"
     class="btn btn-success"
     >Source</a>
   <a
     target="_blank"
-    href="https://www.youtube.com/watch?v=VVnZd8A84z4"
+    href="${data.meals[0].strYoutube}"
     class="btn btn-danger"
     >Youtube</a>
 </div>`;
