@@ -178,6 +178,7 @@ ${tags}
   return htmlData;
 }
 
+// Get Areas Page
 export async function getAreas() {
   let response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
@@ -202,9 +203,84 @@ export async function getAreas() {
   return htmldata;
 }
 
+// Get meals by area
 export async function filterAreaByCity(City) {
   let response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?a=${City}`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const meal in data.meals) {
+    htmldata += `<div class="col-md-3">
+      <div class="meal-card">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
+          <img
+            class="w-100 rounded"
+            src="${data.meals[meal].strMealThumb}"
+            data-id="${data.meals[meal].idMeal}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
+          </div>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
+
+// Get Ingredients Page
+export async function getIngredients() {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/list.php?i=list`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+  let first100 = "";
+  let desc = "";
+
+  for (const ingr in data.meals) {
+    if (data.meals[ingr].strDescription != null) {
+      desc = data.meals[ingr].strDescription;
+      first100 = desc.slice(0, 100);
+    } else {
+      desc = "";
+      first100 = "";
+    }
+
+    if (ingr == 20) {
+      break;
+    }
+
+    // console.log(first100);
+
+    htmldata += `
+    
+    <div class="col-md-3">
+      <div class="ing-card">
+        <a class="text-decoration-none d-flex flex-column justify-content-center align-items-center" href="#" data-id="${data.meals[ingr].strIngredient}">
+        <i class="fa-solid fa-drumstick-bite fs-1 text-white" data-id="${data.meals[ingr].strIngredient}"></i>
+        <h3 class="text-white text-decoration-none" data-id="${data.meals[ingr].strIngredient}">${data.meals[ingr].strIngredient}</h3>
+        <p class="text-white text-decoration-none" data-id="${data.meals[ingr].strIngredient}">${first100}</p>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
+
+// Get meals by ingrediants
+export async function getMealsByIngrediants(ingrediant) {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediant}`
   );
 
   let data = await response.json();

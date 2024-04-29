@@ -5,6 +5,8 @@ import {
   getMealsByCategory,
   getAreas,
   filterAreaByCity,
+  getIngredients,
+  getMealsByIngrediants,
 } from "./api.js";
 
 // Loader
@@ -118,7 +120,6 @@ $("#area").on("click", async function () {
     navBarBtn.children("i").removeClass("fa-x");
     navBarBtn.children("i").addClass("fa-bars");
     let mealid = $(e.target).attr("data-id");
-    console.log(mealid);
     $("#main-data").html(await filterAreaByCity(mealid));
 
     // Get Meal Details Page
@@ -135,5 +136,41 @@ $("#area").on("click", async function () {
 
     $(".loaderContainer-inner").fadeOut(500);
   });
+  $(".loaderContainer-inner").fadeOut(500);
+});
+
+// Get ingrediants
+$("#ingr").on("click", async function () {
+  $(".loaderContainer-inner").fadeIn(300);
+  $(".sidebar").animate({ left: -sideBarInner }, 500);
+  navBarBtn.children("i").removeClass("fa-x");
+  navBarBtn.children("i").addClass("fa-bars");
+  $("#main-data").html(await getIngredients());
+
+  // Get Meals by Ingrediants
+
+  $(".ing-card a").on("click", async function (e) {
+    $(".loaderContainer-inner").fadeIn(300);
+    $(".sidebar").animate({ left: -sideBarInner }, 500);
+    navBarBtn.children("i").removeClass("fa-x");
+    navBarBtn.children("i").addClass("fa-bars");
+    let mealid = $(e.target).attr("data-id");
+    $("#main-data").html(await getMealsByIngrediants(mealid));
+
+    // Get Meal Details Page
+    $(".meal-card a").on("click", async function (e) {
+      $(".loaderContainer-inner").fadeIn(300);
+      $(".sidebar").animate({ left: -sideBarInner }, 500);
+      navBarBtn.children("i").removeClass("fa-x");
+      navBarBtn.children("i").addClass("fa-bars");
+      let mealid = $(e.target).attr("data-id");
+
+      $("#main-data").html(await getMealDetails(mealid));
+      $(".loaderContainer-inner").fadeOut(500);
+    });
+
+    $(".loaderContainer-inner").fadeOut(500);
+  });
+
   $(".loaderContainer-inner").fadeOut(500);
 });
