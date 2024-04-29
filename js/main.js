@@ -3,6 +3,8 @@ import {
   getMealDetails,
   getCategories,
   getMealsByCategory,
+  getAreas,
+  filterAreaByCity,
 } from "./api.js";
 
 // Loader
@@ -98,5 +100,40 @@ $("#categories").on("click", async function () {
     $(".loaderContainer-inner").fadeOut(500);
   });
 
+  $(".loaderContainer-inner").fadeOut(500);
+});
+
+// Get Areas
+$("#area").on("click", async function () {
+  $(".loaderContainer-inner").fadeIn(300);
+  $(".sidebar").animate({ left: -sideBarInner }, 500);
+  navBarBtn.children("i").removeClass("fa-x");
+  navBarBtn.children("i").addClass("fa-bars");
+  $("#main-data").html(await getAreas());
+
+  //Get Meals By Area
+  $(".area-card a").on("click", async function (e) {
+    $(".loaderContainer-inner").fadeIn(300);
+    $(".sidebar").animate({ left: -sideBarInner }, 500);
+    navBarBtn.children("i").removeClass("fa-x");
+    navBarBtn.children("i").addClass("fa-bars");
+    let mealid = $(e.target).attr("data-id");
+    console.log(mealid);
+    $("#main-data").html(await filterAreaByCity(mealid));
+
+    // Get Meal Details Page
+    $(".meal-card a").on("click", async function (e) {
+      $(".loaderContainer-inner").fadeIn(300);
+      $(".sidebar").animate({ left: -sideBarInner }, 500);
+      navBarBtn.children("i").removeClass("fa-x");
+      navBarBtn.children("i").addClass("fa-bars");
+      let mealid = $(e.target).attr("data-id");
+
+      $("#main-data").html(await getMealDetails(mealid));
+      $(".loaderContainer-inner").fadeOut(500);
+    });
+
+    $(".loaderContainer-inner").fadeOut(500);
+  });
   $(".loaderContainer-inner").fadeOut(500);
 });

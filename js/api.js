@@ -6,31 +6,26 @@ export async function getHomepageDate() {
 
   let data = await response.json();
 
-  let counter = 0;
   let htmldata = "";
-
-  //   console.log(data.meals[0]);
 
   for (const meal in data.meals) {
     htmldata += `<div class="col-md-3">
       <div class="meal-card">
-        <a href="#" data-id="${data.meals[counter].idMeal}">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
           <img
             class="w-100 rounded"
-            src="${data.meals[counter].strMealThumb}"
-            data-id="${data.meals[counter].idMeal}"
+            src="${data.meals[meal].strMealThumb}"
+            data-id="${data.meals[meal].idMeal}"
             alt=""
           />
           <div
-            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[counter].idMeal}"
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
           >
-            <h3 class="meal-name text-black" data-id="${data.meals[counter].idMeal}">${data.meals[counter].strMeal}</h3>
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
           </div>
         </a>
       </div>
     </div>`;
-
-    counter++;
   }
   return htmldata;
 }
@@ -181,4 +176,59 @@ ${tags}
 </div>`;
 
   return htmlData;
+}
+
+export async function getAreas() {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/list.php?a=list`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const area in data.meals) {
+    htmldata += `
+    
+    <div class="col-md-3">
+      <div class="area-card ">
+        <a class="text-decoration-none d-flex flex-column justify-content-center align-items-center" href="#" data-id="${data.meals[area].strArea}">
+        <i class="fa-solid fa-house-laptop fs-1 text-white" data-id="${data.meals[area].strArea}"></i>
+        <h3 class="text-white text-decoration-none" data-id="${data.meals[area].strArea}">${data.meals[area].strArea}</h3>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
+
+export async function filterAreaByCity(City) {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/filter.php?a=${City}`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const meal in data.meals) {
+    htmldata += `<div class="col-md-3">
+      <div class="meal-card">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
+          <img
+            class="w-100 rounded"
+            src="${data.meals[meal].strMealThumb}"
+            data-id="${data.meals[meal].idMeal}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
+          </div>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
 }
