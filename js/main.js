@@ -178,130 +178,213 @@ $("#ingr").on("click", async function () {
 });
 
 // Get contact us
-// $("#contact").on("click", function () {
-//   $(".sidebar").animate({ left: -sideBarInner }, 500);
-//   navBarBtn.children("i").removeClass("fa-x");
-//   navBarBtn.children("i").addClass("fa-bars");
 
-//   $(".loaderContainer-inner").fadeIn(500, function () {
-//     $("#main-data").html(`        <div
-//     class="contact min-vh-100 d-flex justify-content-center align-items-center"
-//   >
-//     <div class="container w-75 text-center">
-//       <div class="row g-4">
-//         <div class="col-md-6">
-//           <input
-//             id="nameInput"
+$("#contact").on("click", function () {
+  $(".sidebar").animate({ left: -sideBarInner }, 500);
+  navBarBtn.children("i").removeClass("fa-x");
+  navBarBtn.children("i").addClass("fa-bars");
 
-//             type="text"
-//             class="form-control"
-//             placeholder="Enter Your Name"
-//           />
-//           <div
-//             id="nameAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Special characters and numbers not allowed
-//           </div>
-//         </div>
-//         <div class="col-md-6">
-//           <input
-//             id="emailInput"
+  $(".loaderContainer-inner").fadeIn(500, function () {
+    $("#main-data").html(`        <div
+    class="contact min-vh-100 d-flex justify-content-center align-items-center"
+  >
+    <div class="container w-75 text-center">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <input
+            id="nameInput"
 
-//             type="email"
-//             class="form-control"
-//             placeholder="Enter Your Email"
-//           />
-//           <div
-//             id="emailAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Email not valid *exemple@yyy.zzz
-//           </div>
-//         </div>
-//         <div class="col-md-6">
-//           <input
-//             id="phoneInput"
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Name"
+          />
+          <div
+            id="nameAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Special characters and numbers not allowed
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            id="emailInput"
 
-//             type="text"
-//             class="form-control"
-//             placeholder="Enter Your Phone"
-//           />
-//           <div
-//             id="phoneAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Enter valid Phone Number
-//           </div>
-//         </div>
-//         <div class="col-md-6">
-//           <input
-//             id="ageInput"
+            type="email"
+            class="form-control"
+            placeholder="Enter Your Email"
+          />
+          <div
+            id="emailAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Email not valid *exemple@yyy.zzz
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            id="phoneInput"
 
-//             type="number"
-//             class="form-control"
-//             placeholder="Enter Your Age"
-//           />
-//           <div
-//             id="ageAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Enter valid age
-//           </div>
-//         </div>
-//         <div class="col-md-6">
-//           <input
-//             id="passwordInput"
+            type="text"
+            class="form-control"
+            placeholder="Enter Your Phone"
+          />
+          <div
+            id="phoneAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Enter valid Phone Number
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            id="ageInput"
 
-//             type="password"
-//             class="form-control"
-//             placeholder="Enter Your Password"
-//           />
-//           <div
-//             id="passwordAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Enter valid password *Minimum eight characters, at least one
-//             letter and one number:*
-//           </div>
-//         </div>
-//         <div class="col-md-6">
-//           <input
-//             id="repasswordInput"
+            type="number"
+            class="form-control"
+            placeholder="Enter Your Age"
+          />
+          <div
+            id="ageAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Enter valid age
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            id="passwordInput"
 
-//             type="password"
-//             class="form-control"
-//             placeholder="Repassword"
-//           />
-//           <div
-//             id="repasswordAlert"
-//             class="alert alert-danger w-100 mt-2 d-none"
-//             wfd-invisible="true"
-//           >
-//             Enter valid repassword
-//           </div>
-//         </div>
-//       </div>
-//       <button id="submitBtn" class="btn btn-outline-danger px-2 mt-3">
-//         Submit
-//       </button>
-//     </div>
-//   </div>`);
+            type="password"
+            class="form-control"
+            placeholder="Enter Your Password"
+          />
+          <div
+            id="passwordAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Enter valid password *Minimum eight characters, at least one
+            letter and one number:*
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            id="repasswordInput"
 
-//     $("#nameInput").on("keyup", function (e) {
-//       if (validation.nameValidation.test($(e.target.value))) {
-//         console.log("true");
-//       } else {
-//         console.log("false");
-//       }
-//       // console.log(e.target.value);
+            type="password"
+            class="form-control"
+            placeholder="Repassword"
+          />
+          <div
+            id="repasswordAlert"
+            class="alert alert-danger w-100 mt-2 d-none"
+            wfd-invisible="true"
+          >
+            Enter valid repassword
+          </div>
+        </div>
+      </div>
+      <button id="submitBtn" class="btn btn-outline-danger px-2 mt-3" disabled>
+        Submit
+      </button>
+    </div>
+  </div>`);
+
+    $(document).ready(function () {
+      $(
+        "#nameInput, #emailInput, #phoneInput, #ageInput, #passwordInput, #repasswordInput"
+      ).on("input", function () {
+        var nameRegex = /^[a-zA-Z ]+$/;
+        var emailRegex =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var phoneRegex =
+          /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+        var ageRegex = /^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/;
+        var passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
+        var repasswordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
+
+        // if (nameRegex.test($("#nameInput").val())) {
+        //   $("#nameAlert").removeClass("d-block");
+        //   $("#nameAlert").addClass("d-none");
+        // } else {
+        //   $("#nameAlert").removeClass("d-none");
+        //   $("#nameAlert").addClass("d-block");
+        // }
+
+        // let test = "Abdullah";
+        // console.log(nameRegex.test(test));
+
+        if (
+          $("#nameInput").val().match(nameRegex) &&
+          $("#emailInput").val().match(emailRegex) &&
+          $("#phoneInput").val().match(phoneRegex) &&
+          $("#ageInput").val().match(ageRegex) &&
+          $("#passwordInput").val().match(passwordRegex) &&
+          $("#repasswordInput").val().match(repasswordRegex)
+        ) {
+          if ($("#passwordInput").val() == $("#repasswordInput").val()) {
+            $("#submitBtn").removeAttr("disabled"); // enable the submit button
+          } else {
+            $("#submitBtn").attr("disabled", true); // disable the submit button
+          }
+        }
+      });
+    });
+
+    $(".loaderContainer-inner").fadeOut(300);
+  });
+});
+
+// let nameInputTouched = false;
+//     let emailInputTouched = false;
+//     let phoneInputTouched = false;
+//     let ageInputTouched = false;
+//     let passwordInputTouched = false;
+//     let repasswordInputTouched = false;
+
+//     $("#nameInput").on("focus", function () {
+//       console.log("name pressed");
+//       nameInputTouched = true;
 //     });
-//   });
 
-//   $(".loaderContainer-inner").fadeOut(300);
-// });
+//     $("#emailInput").on("focus", function () {
+//       console.log("email pressed");
+//       emailInputTouched = true;
+//     });
+
+//     $("#phoneInput").on("focus", function () {
+//       console.log("phone pressed");
+//       phoneInputTouched = true;
+//     });
+
+//     $("#ageInput").on("focus", function () {
+//       console.log("age pressed");
+//       ageInputTouched = true;
+//     });
+
+//     $("#passwordInput").on("focus", function () {
+//       console.log("password pressed");
+//       passwordInputTouched = true;
+//     });
+
+//     $("#repasswordInput").on("focus", function () {
+//       console.log("repassword pressed");
+//       repasswordInputTouched = true;
+//     });
+
+//     if (
+//       validation.nameValidation() &&
+//       validation.emailValidation() &&
+//       validation.phoneValidation() &&
+//       validation.ageValidation() &&
+//       validation.passwordValidation() &&
+//       validation.repasswordValidation()
+//     ) {
+//       $("#submitBtn").removeAttr("disabled");
+//     } else {
+//       $("#submitBtn").attr("disabled", true);
+//     }
