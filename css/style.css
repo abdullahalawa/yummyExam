@@ -56,8 +56,8 @@ div.cat-card:hover div.overlay {
 }
 
 /* Search page */
-#byName[type="text"]::placeholder,
-#byFirstLetter[type="text"]::placeholder {
+#searchByName[type="text"]::placeholder,
+#searchByFirstLetter[type="text"]::placeholder {
   color: #ffffff60 !important; /* Replace with your desired color */
 }
 
@@ -97,6 +97,19 @@ div.cat-card:hover div.overlay {
   z-index: 9;
   position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaderContainer-inner-search {
+  background-color: #000;
+  z-index: 9;
+  position: fixed;
+  top: 100px;
   left: 0;
   right: 0;
   bottom: 0;

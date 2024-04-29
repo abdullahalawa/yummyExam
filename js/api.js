@@ -307,4 +307,65 @@ export async function getMealsByIngrediants(ingrediant) {
 }
 
 // Search meal by name
-// export async function searchMealByName(mealName) {}
+export async function searchMealByName(mealName) {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const meal in data.meals) {
+    htmldata += `<div class="col-md-3">
+      <div class="meal-card">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
+          <img
+            class="w-100 rounded"
+            src="${data.meals[meal].strMealThumb}"
+            data-id="${data.meals[meal].idMeal}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
+          </div>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
+
+// Search meal by first letter
+export async function searchMealByFirstLetter(letter) {
+  let response = await fetch(
+    `https://www.themealdb.com/api/json/v1/1/search.php?f=${letter}`
+  );
+
+  let data = await response.json();
+
+  let htmldata = "";
+
+  for (const meal in data.meals) {
+    htmldata += `<div class="col-md-3">
+      <div class="meal-card">
+        <a href="#" data-id="${data.meals[meal].idMeal}">
+          <img
+            class="w-100 rounded"
+            src="${data.meals[meal].strMealThumb}"
+            data-id="${data.meals[meal].idMeal}"
+            alt=""
+          />
+          <div
+            class="overlay d-flex justify-content-start align-items-center p-2" data-id="${data.meals[meal].idMeal}"
+          >
+            <h3 class="meal-name text-black" data-id="${data.meals[meal].idMeal}">${data.meals[meal].strMeal}</h3>
+          </div>
+        </a>
+      </div>
+    </div>`;
+  }
+  return htmldata;
+}
