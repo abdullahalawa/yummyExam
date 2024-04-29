@@ -9,8 +9,6 @@ import {
   getMealsByIngrediants,
 } from "./api.js";
 
-import * as validation from "./validations.js";
-
 // Loader
 $(window).on("load", function () {
   $(".loaderContainer").fadeOut(1000);
@@ -307,16 +305,65 @@ $("#contact").on("click", function () {
         var passwordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
         var repasswordRegex = /^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/;
 
-        // if (nameRegex.test($("#nameInput").val())) {
-        //   $("#nameAlert").removeClass("d-block");
-        //   $("#nameAlert").addClass("d-none");
-        // } else {
-        //   $("#nameAlert").removeClass("d-none");
-        //   $("#nameAlert").addClass("d-block");
-        // }
+        $("#nameInput").on("input", function (e) {
+          if (nameRegex.test($(e.target).val())) {
+            $("#nameAlert").removeClass("d-block");
+            $("#nameAlert").addClass("d-none");
+          } else {
+            $("#nameAlert").removeClass("d-none");
+            $("#nameAlert").addClass("d-block");
+          }
+        });
 
-        // let test = "Abdullah";
-        // console.log(nameRegex.test(test));
+        $("#emailInput").on("input", function (e) {
+          if (emailRegex.test($(e.target).val())) {
+            $("#emailAlert").removeClass("d-block");
+            $("#emailAlert").addClass("d-none");
+          } else {
+            $("#emailAlert").removeClass("d-none");
+            $("#emailAlert").addClass("d-block");
+          }
+        });
+
+        $("#phoneInput").on("input", function (e) {
+          if (phoneRegex.test($(e.target).val())) {
+            $("#phoneAlert").removeClass("d-block");
+            $("#phoneAlert").addClass("d-none");
+          } else {
+            $("#phoneAlert").removeClass("d-none");
+            $("#phoneAlert").addClass("d-block");
+          }
+        });
+
+        $("#ageInput").on("input", function (e) {
+          if (ageRegex.test($(e.target).val())) {
+            $("#ageAlert").removeClass("d-block");
+            $("#ageAlert").addClass("d-none");
+          } else {
+            $("#ageAlert").removeClass("d-none");
+            $("#ageAlert").addClass("d-block");
+          }
+        });
+
+        $("#passwordInput").on("input", function (e) {
+          if (passwordRegex.test($(e.target).val())) {
+            $("#passwordAlert").removeClass("d-block");
+            $("#passwordAlert").addClass("d-none");
+          } else {
+            $("#passwordAlert").removeClass("d-none");
+            $("#passwordAlert").addClass("d-block");
+          }
+        });
+
+        $("#repasswordInput").on("input", function (e) {
+          if (repasswordRegex.test($(e.target).val())) {
+            $("#repasswordAlert").removeClass("d-block");
+            $("#repasswordAlert").addClass("d-none");
+          } else {
+            $("#repasswordAlert").removeClass("d-none");
+            $("#repasswordAlert").addClass("d-block");
+          }
+        });
 
         if (
           $("#nameInput").val().match(nameRegex) &&
@@ -338,53 +385,3 @@ $("#contact").on("click", function () {
     $(".loaderContainer-inner").fadeOut(300);
   });
 });
-
-// let nameInputTouched = false;
-//     let emailInputTouched = false;
-//     let phoneInputTouched = false;
-//     let ageInputTouched = false;
-//     let passwordInputTouched = false;
-//     let repasswordInputTouched = false;
-
-//     $("#nameInput").on("focus", function () {
-//       console.log("name pressed");
-//       nameInputTouched = true;
-//     });
-
-//     $("#emailInput").on("focus", function () {
-//       console.log("email pressed");
-//       emailInputTouched = true;
-//     });
-
-//     $("#phoneInput").on("focus", function () {
-//       console.log("phone pressed");
-//       phoneInputTouched = true;
-//     });
-
-//     $("#ageInput").on("focus", function () {
-//       console.log("age pressed");
-//       ageInputTouched = true;
-//     });
-
-//     $("#passwordInput").on("focus", function () {
-//       console.log("password pressed");
-//       passwordInputTouched = true;
-//     });
-
-//     $("#repasswordInput").on("focus", function () {
-//       console.log("repassword pressed");
-//       repasswordInputTouched = true;
-//     });
-
-//     if (
-//       validation.nameValidation() &&
-//       validation.emailValidation() &&
-//       validation.phoneValidation() &&
-//       validation.ageValidation() &&
-//       validation.passwordValidation() &&
-//       validation.repasswordValidation()
-//     ) {
-//       $("#submitBtn").removeAttr("disabled");
-//     } else {
-//       $("#submitBtn").attr("disabled", true);
-//     }
