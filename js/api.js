@@ -30,9 +30,6 @@ export async function getHomepageDate() {
   return htmldata;
 }
 
-// Search meal by name
-// export async function searchMealByName(mealName) {}
-
 // Get categories
 export async function getCategories() {
   let response = await fetch(
@@ -308,3 +305,6 @@ export async function getMealsByIngrediants(ingrediant) {
   }
   return htmldata;
 }
+
+// Search meal by name
+// export async function searchMealByName(mealName) {}
